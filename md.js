@@ -470,3 +470,29 @@ let student = {
 } 
 student.age = 56;
 console.log(student.greet())
+
+
+let developer = {
+  //Personal info
+
+  name: 'Philip',
+  state: 'Benue',
+  marritalStatue: ' Single',
+  skills: [],
+
+  //Dev dynamic info
+  age(){
+    return (new Date().getFullYear() - 1967)
+  },
+  yearsOfExperience(){
+    return (new Date().getFullYear() - 2023)
+  },
+  skill(arr){
+    arr.forEach(n => {
+      this.skills.push(n)
+    });
+    // return this.skills
+  }
+}
+let res = developer.skill(['java', 'python']);
+console.log(developer.skills)
