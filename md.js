@@ -434,6 +434,11 @@ let user ={
 // })
 
 
+
+//=================== STUDENT OBJECT================
+
+
+
 let student = {
 
     //object properties
@@ -472,6 +477,8 @@ student.age = 56;
 console.log(student.greet())
 
 
+// ================== DEVELOPER OBJECT =================
+
 let developer = {
   //Personal info
 
@@ -492,7 +499,16 @@ let developer = {
       this.skills.push(n)
     });
     // return this.skills
+  },
+  projects(arr){
+    let count = 0;
+    arr.forEach(n => {
+      if(n){
+        count++
+      }
+    })
+    return count
   }
 }
-let res = developer.skill(['java', 'python']);
-console.log(developer.skills)
+let res = developer.projects(['java', 'python']);
+console.log(res)
