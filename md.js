@@ -547,4 +547,40 @@ developerConstuctor.prototype.greet = function(){
 
   let dev1 = new developerConstuctor('Philip', 2003, 'Benue', 2023)
   dev1.skill(['Java', ' JavaScript'])
-  console.log(dev1.greet())
+  // console.log(dev1.greet());
+
+ 
+  // USING CLASSES TO CREATE A REUSEABLE BLUE PRINT
+
+  class PersonClass{
+    constructor(name, age, gender){
+      this.name = name,
+      this.age = age,
+      this.gender = gender
+    }
+    greet(){
+      return `Hello! I am ${this.name}, a ${this.gender}. I am ${this.age} years old.`
+    }
+  }
+  let user3 = new PersonClass('Philip', 34, 'M')
+  // console.log(user3.greet())
+
+  //DEV BLUEPRINT OBJECT CONSTRUCTOR
+
+class DevPersonCLassConstructor extends PersonClass{
+  constructor(name, programmingLanguage, yearOfBirth){
+    super(name)
+    this.yearOfBirth = yearOfBirth,
+    this.programmingLanguage = programmingLanguage
+  }
+  birth(){
+    let cur = new Date().getFullYear();
+    let birth = this.yearOfBirth
+    return (cur - birth)
+  }
+  code(){
+    return `${this.name}, of age ${this.birth()} is coding with ${this.programmingLanguage}`
+  }
+} let user4 = new DevPersonCLassConstructor('Mabas', 'JavaScript', 2002);
+console.log(user4.code())
+// console.log(user4.greet())
