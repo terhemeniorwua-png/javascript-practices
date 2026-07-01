@@ -474,41 +474,77 @@ let student = {
     }
 } 
 student.age = 56;
-console.log(student.greet())
+// console.log(student.gre  et())
 
 
 // ================== DEVELOPER OBJECT =================
 
-let developer = {
+let devPerson ={
   //Personal info
 
   name: 'Philip',
+  yearOfbirth: 1990,
   state: 'Benue',
-  marritalStatue: ' Single',
+  yearStated: 2023,
+  marritalStatue: 'Single',
   skills: [],
+  count: 0,
 
   //Dev dynamic info
   age(){
-    return (new Date().getFullYear() - 1967)
+    let cur = new Date().getFullYear();
+    let birth =this.yearOfbirth
+    return (cur - birth) 
   },
   yearsOfExperience(){
-    return (new Date().getFullYear() - 2023)
+    return (new Date().getFullYear() - this.yearStated)
   },
   skill(arr){
     arr.forEach(n => {
-      this.skills.push(n)
+      this.skills.push(n);
+      this.count++
     });
     // return this.skills
   },
-  projects(arr){
-    let count = 0;
-    arr.forEach(n => {
-      if(n){
-        count++
-      }
-    })
-    return count
+  greet(){
+    return `Hi there!. My name is ${this.name}. I am from ${this.state}. I am ${this.age()} years old. My ${this.yearsOfExperience()} years of experience with programing has been interesting years. I have built ${this.count} projects with the knowledege of: ${this.skills}. With God, I shall do better and prosper.`
   }
 }
-let res = developer.projects(['java', 'python']);
-console.log(res)
+devPerson.skill(['Java', ' Javascript', ' Python', ' Rust']);
+// console.log(devPerson.greet())
+
+
+
+//dEVELOPER OBJECT CONSTRUCTOR
+
+ function developerConstuctor(name = 'Guest', yearOfBirt, state ='Foreigner', yearStated, marritalStatue = 'Single'){
+  this.name = name,
+  this.yearOfBirt = yearOfBirt,
+  this.state = state,
+  this.yearStated = yearStated,
+  this.marritalStatue = marritalStatue
+  this.skills = [],
+  this.count = 0
+ }
+developerConstuctor.prototype.age = function(){
+    let cur = new Date().getFullYear();
+    let birth =this.yearOfBirt
+    return (cur - birth) 
+  },
+developerConstuctor.prototype.yearsOfExperience = function(){
+    return (new Date().getFullYear() - this.yearStated)
+  },
+  developerConstuctor.prototype.skill = function(arr){
+    arr.forEach(n => {
+      this.skills.push(n);
+      this.count++
+    });
+    // return this.skills
+  },
+developerConstuctor.prototype.greet = function(){
+    return `Hi there!. My name is ${this.name}. I am from ${this.state}. I am ${this.age()} years old. My ${this.yearsOfExperience()} years of experience with programing has been interesting years. I have built ${this.count} projects with the knowledege of: ${this.skills}. With God, I shall do better and prosper.`
+  }
+
+  let dev1 = new developerConstuctor('Philip', 2003, 'Benue', 2023)
+  dev1.skill(['Java', ' JavaScript'])
+  console.log(dev1.greet())
